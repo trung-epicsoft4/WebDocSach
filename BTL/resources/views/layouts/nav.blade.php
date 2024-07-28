@@ -8,26 +8,26 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Quan ly danh muc
+                  Quản lý danh mục
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('danhmuc.create') }}">Them danh muc</a></li>
-                  <li><a class="dropdown-item" href="{{ route('danhmuc.index') }}">Liet ke danh muc</a></li>
+                  <li><a class="dropdown-item" href="{{ route('danhmuc.create') }}">Thêm danh mục</a></li>
+                  <li><a class="dropdown-item" href="{{ route('danhmuc.index') }}">Liệt kê danh mục</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Quan ly sach
+                  Quản lý sách
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('sach.create') }}">Them sach</a></li>
-                  <li><a class="dropdown-item" href="{{ route('sach.index') }}">Liet ke sach</a></li>
+                  <li><a class="dropdown-item" href="{{ route('sach.create') }}">Thêm sách</a></li>
+                  <li><a class="dropdown-item" href="{{ route('sach.index') }}">Liệt kê sách</a></li>
                 </ul>
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Tim kiem</button>
+              <input class="form-control me-2" type="search" placeholder="Tim kiem" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
             </form>
           </div>
         </div>

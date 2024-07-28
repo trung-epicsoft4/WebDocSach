@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Them danh muc</div>
+                <div class="card-header">Thêm danh mục</div>
                 
                 <div class="card-body">
 
@@ -29,23 +29,23 @@
                     <form method="POST" action="{{ route('danhmuc.store') }}">
                         @CSRF
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Ten danh muc</label>
+                          <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
                           <input type="text" class="form-control" value="{{ old('tendanhmuc') }}" name="tendanhmuc" placeholder="Ten danh muc...">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mo ta danh muc</label>
+                            <label for="exampleInputEmail1" class="form-label">Mô tả danh mục</label>
                             <input type="text" class="form-control" value="{{ old('tendanhmuc') }}" name="motadanhmuc" placeholder="Mo ta danh muc...">
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Kich hoat</label>
-                            <select class="form-select" aria-label="Default select example" name="kichhoat" value="{{ __old('tendanhmuc') }}">
-                                <option value="0">Kich hoat</option>
-                                <option value="1">Khong kich hoat</option>
+                            <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
+                            <select class="form-select" aria-label="Default select example" name="kichhoat" value="{{ old('kichhoat') }}">
+                                <option value="0">Kích hoạt</option>
+                                <option value="1">Không kích hoạt</option>
                             </select>
                         </div>
                         
-                        <button type="submit" name="themdanhmuc" class="btn btn-primary">Them</button>
+                        <button type="submit" name="themdanhmuc" class="btn btn-primary">Thêm</button>
                     </form>
                     
                 </div>

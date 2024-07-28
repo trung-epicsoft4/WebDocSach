@@ -36,9 +36,10 @@ class DanhMucController extends Controller
                 'kichhoat' => 'required',
             ],
             [
-                'tendanhmuc.required' => 'Vui long nhap ten danh muc!',
-                'tendanhmuc.unique' => 'Ten danh muc da ton tai, vui long nhap ten khac!',
-                'motadanhmuc.required' => 'Vui long nhap mo ta danh muc!',
+                'tendanhmuc.required' => 'Vui lòng nhập tên danh mục!',
+                'tendanhmuc.unique' => 'Tên danh mục đã tồn tại, vui lòng nhập tên khác!',
+                'motadanhmuc.required' => 'Vui lòng nhập mô tả danh mục!',
+                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
             ]
         );
 
@@ -47,7 +48,7 @@ class DanhMucController extends Controller
         $danhMuc->MoTa = $data['motadanhmuc']; 
         $danhMuc->KichHoat = $data['kichhoat'];
         $danhMuc->save();
-        return redirect()->back()->with('status', 'Them danh muc thanh cong'); 
+        return redirect()->back()->with('status', 'Thêm danh mục thành công'); 
     }
 
     /**
@@ -79,8 +80,8 @@ class DanhMucController extends Controller
                 'kichhoat' => 'required',
             ],
             [
-                'tendanhmuc.required' => 'Vui long nhap ten danh muc!',
-                'motadanhmuc.required' => 'Vui long nhap mo ta danh muc!',
+                'tendanhmuc.required' => 'Vui lòng nhập tên danh mục!',
+                'motadanhmuc.required' => 'Vui lòng nhập mô tả danh mục!',
             ]
         );
 
@@ -89,7 +90,7 @@ class DanhMucController extends Controller
         $danhMuc->MoTa = $data['motadanhmuc']; 
         $danhMuc->KichHoat = $data['kichhoat'];
         $danhMuc->update();
-        return redirect()->back()->with('status', 'Cap nhat danh muc thanh cong'); 
+        return redirect()->back()->with('status', 'Cập nhật danh mục thành công!'); 
     }
 
     /**
@@ -98,6 +99,6 @@ class DanhMucController extends Controller
     public function destroy(string $id)
     {
         DanhMuc::find($id)->delete();
-        return redirect()->back()->with('status', 'Xoa danh muc thanh cong');  
+        return redirect()->back()->with('status', 'Xoá danh mục thành công!');  
     }
 }

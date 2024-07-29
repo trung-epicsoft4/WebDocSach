@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('Sach', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('TenSach')->unique();
-            $table->string('MoTa');
+            $table->text('MoTa');
             $table->string('HinhAnh');
             $table->string('FileSach');
             $table->integer('KichHoat');
+            $table->integer('DanhMucID');
         });
     }
 

@@ -26,7 +26,7 @@
                         </div>
                     @endif
                         
-                    <form method="POST" action="{{ route('sach.store') }}">
+                    <form method="POST" action="{{ route('sach.store') }}" enctype="multipart/form-data">
                         @CSRF
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Tên sách</label>
@@ -35,12 +35,12 @@
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Mô tả sách</label>
-                            <textarea name="" id="" class="form-control"></textarea>
+                            <textarea id="" class="form-control" name="motasach" value="{{ old('motasach') }}"></textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Danh mục sách</label>
-                            <select class="form-select" aria-label="Default select example" name="danhmucsach" value="{{ old('kichhoat') }}">
+                            <select class="form-select" aria-label="Default select example" name="danhmucsach" value="{{ old('danhmucsach') }}">
                                 @foreach ($danhSachDanhMuc as $danhmuc )
                                     <option value="{{ $danhmuc['id'] }}">{{ $danhmuc['TenDanhMuc'] }}</option>
                                 @endforeach                                
@@ -49,7 +49,7 @@
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
-                          <input type="file" class="form-control" name="image">
+                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
                         </div>
 
                         <div class="mb-3">

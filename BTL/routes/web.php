@@ -8,7 +8,7 @@ use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\SachController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();

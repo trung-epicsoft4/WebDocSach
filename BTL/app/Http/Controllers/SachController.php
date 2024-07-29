@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DanhMuc;
 use Illuminate\Http\Request;
+use App\Models\Sach;
 
 class SachController extends Controller
 {
@@ -19,7 +21,8 @@ class SachController extends Controller
      */
     public function create()
     {
-        return view('admin.sach.create');
+        $danhSachDanhMuc = DanhMuc::all();
+        return view('admin.sach.create')->with(compact(('danhSachDanhMuc')));
     }
 
     /**
@@ -27,7 +30,7 @@ class SachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         
     }
 
     /**

@@ -15,4 +15,8 @@ class DanhMuc extends Model
     ];
     protected $primaryKey = 'id';
     protected $table = 'DanhMuc';
+
+    public function sach() {
+        return $this->hasMany('app/Models/Sach');
+    }
 }

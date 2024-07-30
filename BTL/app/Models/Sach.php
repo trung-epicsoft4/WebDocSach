@@ -11,7 +11,7 @@ class Sach extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'TenSach', 'MoTa', 'KichHoat', 'HinhAnh', 'FileSach', 'DanhMucID'
+        'TenSach', 'MoTa', 'KichHoat', 'HinhAnh', 'NoiDung', 'DanhMucID'
     ];
     protected $primaryKey = 'id';
     protected $table = 'Sach';

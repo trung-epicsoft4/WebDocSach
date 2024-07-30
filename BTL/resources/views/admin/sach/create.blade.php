@@ -48,15 +48,14 @@
                         </div>
 
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
-                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
+                            <label for="exampleInputEmail1" class="form-label">Nội dung</label>
+                            <textarea id="" class="form-control" name="noidungsach" value="{{ old('noidungsach') }}"></textarea>
                         </div>
 
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">File sách</label>
-                          <input type="file" class="form-control" name="filesach">
+                          <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
+                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
                         </div>
-
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>

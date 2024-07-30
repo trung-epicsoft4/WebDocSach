@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Cap nhat sách</div>
+                <div class="card-header">Cập nhật sách</div>
                 
                 <div class="card-body">
 
@@ -49,17 +49,16 @@
                         </div>
 
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
-                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
-                          <img src="{{ asset('public/uploads/sach/'.$sach['HinhAnh']) }}" alt="">
+                            <label for="exampleInputEmail1" class="form-label">Nội dung</label>
+                            <textarea id="" class="form-control" name="noidungsach" value="{{ $sach['NoiDung'] }}"></textarea>
                         </div>
 
                         <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">File sách</label>
-                          <input type="file" class="form-control" name="filesach">
-                          <iframe src="{{ asset('public/uploads/sach/'.$sach['FileSach']) }}"></iframe>
-                          <!-- <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fraw%2Egithubusercontent%2Ecom%3A443%2Fdolanmiu%2Fdocx%2Fmaster%2Fdemo%2Fdotx%2Ftemplate%2Edotx" width="640px" height="300px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe> -->
+                          <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
+                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
+                          <img src="{{ asset('public/uploads/sach/'.$sach['HinhAnh']) }}" alt="" width="50px" height="50px">
                         </div>
+
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
                             <select class="form-select" aria-label="Default select example" name="kichhoat" value="{{ $sach['KichHoat'] }}">
@@ -67,7 +66,7 @@
                                 <option value="1">Không kích hoạt</option>
                             </select>
                         </div>
-                        <button type="submit" name="themsach" class="btn btn-primary">Thêm</button>
+                        <button type="submit" name="themsach" class="btn btn-primary">Sửa</button>
                     </form>
                 </div>
             </div>

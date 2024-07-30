@@ -4,9 +4,9 @@
 @include('layouts.nav')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Liet ke danh muc</div>
+                <div class="card-header">Liệt kê danh mục</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -18,11 +18,11 @@
                     <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">Ma danh muc</th>
-                            <th scope="col">Ten danh muc</th>
-                            <th scope="col">Mo ta</th>
-                            <th scope="col">Kich hoat</th>
-                            <th scope="col">Quan ly</th>
+                            <th scope="col">Mã danh mục</th>
+                            <th scope="col">Tên danh mục</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Kích hoạt</th>
+                            <th scope="col">Quản lý</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -33,17 +33,17 @@
                                     <td>{{ $danhMuc['MoTa'] }}</td>
                                     <td>
                                         @if($danhMuc['KichHoat'] == 0)
-                                            <span class='text text-success'>Kich hoat</span>
+                                            <span class='text text-success'>Kích hoạt</span>
                                         @else
-                                            <span class='text text-danger'>Khong kich hoat</span>
+                                            <span class='text text-danger'>Không kích hoạt</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('danhmuc.edit', ['danhmuc' => $danhMuc['id']]) }}" class='btn btn-primary'>Sua</a>
+                                        <a href="{{ route('danhmuc.edit', ['danhmuc' => $danhMuc['id']]) }}" class='btn btn-primary'>Sửa</a>
                                         <form action="{{ route('danhmuc.destroy', ['danhmuc' => $danhMuc['id']]) }}" method="POST">
                                             @method('DELETE')
                                             @CSRF
-                                            <button class='btn btn-danger' onclick="return confirm('Ban co chac chan muon xoa danh muc nay khong?');">Xoa</button>
+                                            <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá danh mục này không?');">Xoá</button>
                             
                                         </form>
                                     </td>

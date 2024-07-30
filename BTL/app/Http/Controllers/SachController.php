@@ -6,9 +6,14 @@ use App\Models\DanhMuc;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Models\Sach;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class SachController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +36,7 @@ class SachController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {         
         $data = $request->validate(
             [
                 'tensach' => 'required|unique:sach|max:255',
@@ -39,7 +44,7 @@ class SachController extends Controller
                 'kichhoat' => 'required',
                 'danhmucsach' => 'required',
                 'hinhanh' => 'required|image',
-                'filesach' => 'required'
+                'noidungsach' => 'required',
             ],
             [
                 'tensach.required' => 'Vui lòng nhập tên sách!',
@@ -48,7 +53,7 @@ class SachController extends Controller
                 'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
                 'danhmucsach.required' => 'Vui lòng chọn danh mục sách!',
                 'hinhanh.required' => 'Vui lòng chọn hình ảnh!',
-                'filesach.required' => 'Vui lòng chọn file sách!',
+                'noidungsach.required' => 'Vui lòng nhập nội dung!',
             ]
         );
 
@@ -57,17 +62,14 @@ class SachController extends Controller
         $sach->DanhMucID = $data['danhmucsach'];
         $sach->MoTa = $data['motasach']; 
         $sach->KichHoat = $data['kichhoat'];
+        $sach->NoiDung = $data['noidungsach'];
 
         $get_image = $data['hinhanh'];
         $path = "public/uploads/sach/";
         $newImageName = $data['tensach'].'.'.$get_image->getClientOriginalName();
         $get_image->move($path, $newImageName);
-        $sach->HinhAnh = $newImageName;
 
-        $get_file = $data['filesach'];
-        $newFileName = $data['tensach'].'.'.$get_file->getClientOriginalName();
-        $get_file->move($path, $newFileName);
-        $sach->FileSach = $newFileName;
+        $sach->HinhAnh = $newImageName;
         $sach->save();
 
         return redirect()->back()->with('status', 'Thêm sách thành công'); 
@@ -96,7 +98,41 @@ class SachController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate(
+            [
+                'tensach' => 'required|max:255',
+                'motasach' => 'required',
+                'kichhoat' => 'required',
+                'danhmucsach' => 'required',
+                'noidungsach' => 'required',
+            ],
+            [
+                'tensach.required' => 'Vui lòng nhập tên sách!',
+                'tensach.unique' => 'Tên sách đã tồn tại, vui lòng nhập tên khác!',
+                'motasach.required' => 'Vui lòng nhập mô tả sách!',
+                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
+                'danhmucsach.required' => 'Vui lòng chọn danh mục sách!',
+                'noidungsach.required' => 'Vui lòng nhập nội dung!',
+            ]
+        );
+
+        $sach = Sach::find($id);
+        $sach->TenSach = $data['tensach']; 
+        $sach->DanhMucID = $data['danhmucsach'];
+        $sach->MoTa = $data['motasach']; 
+        $sach->KichHoat = $data['kichhoat'];
+        $sach->NoiDung = $data['noidungsach'];
+
+        if (isset($data['hinhanh'])) {
+            $get_image = $data['hinhanh'];
+            $path = "public/uploads/sach/";
+            $newImageName = $data['tensach'].'.'.$get_image->getClientOriginalName();
+            $get_image->move($path, $newImageName);
+            $sach->HinhAnh = $newImageName;
+        }
+        
+        $sach->update();
+        return redirect()->back()->with('status', 'Cập nhật sách thành công!');
     }
 
     /**

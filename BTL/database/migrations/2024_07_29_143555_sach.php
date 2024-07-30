@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('TenSach')->unique();
             $table->text('MoTa');
             $table->string('HinhAnh');
-            $table->string('FileSach');
+            $table->text('NoiDung');
             $table->integer('KichHoat');
             $table->integer('DanhMucID');
         });

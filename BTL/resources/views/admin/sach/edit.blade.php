@@ -35,8 +35,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mô tả sách</label>
-                            <textarea id="" class="form-control" name="motasach" value="{{ $sach['MoTa'] }}"></textarea>
+                          <label for="exampleInputEmail1" class="form-label">Tac gia</label>
+                          <input type="text" class="form-control" value="{{ $sach['TacGia'] }}" name="tacgia" placeholder="Tác giả...">
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Nam xuat ban</label>
+                          <input type="text" class="form-control" value="{{ $sach['NamXuatBan'] }}" name="namxuatban" placeholder="Nam xuat ban...">
                         </div>
 
                         <div class="mb-3">
@@ -49,8 +54,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nội dung</label>
-                            <textarea id="" class="form-control" name="noidungsach" value="{{ $sach['NoiDung'] }}"></textarea>
+                            <label for="exampleInputEmail1" class="form-label">Mô tả sách</label>
+                            <textarea id="" class="form-control" name="motasach" value="{{ $sach['MoTa'] }}"></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -66,6 +71,7 @@
                                 <option value="1">Không kích hoạt</option>
                             </select>
                         </div>
+                        
                         <button type="submit" name="themsach" class="btn btn-primary">Sửa</button>
                     </form>
                 </div>

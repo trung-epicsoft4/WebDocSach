@@ -10,3 +10,7 @@ Cách config project:
 - Bước 8: chạy lệnh: npm run build
 - Bước 9: chạy lệnh: php artisan serve
 -> Mở bằng link được hiện trên màn hình sau khi chạy lệnh php artisan serve
+
+// Tạo bảng: php artisan make:migrate TenBang;
+// Tạo model: php artisan make:model TenMode;
+// Tạo Controller theo kiểu resource: php artisan make:controller TenController --resource

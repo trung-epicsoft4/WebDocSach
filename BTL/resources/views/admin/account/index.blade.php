@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Liệt kê chương</div>
+                <div class="card-header">Liệt kê tài khoản</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,44 +15,35 @@
                         </div>
                     @endif
 
-                    <form method="get" action="{{ route('chuong.index') }}">
-                        @method('GET')
-                        <div>
-                            <label for="exampleInputEmail1" class="form-label">Sách</label>
-                            <select class="form-select" aria-label="Default select example" name="sachID" value="{{ $sachID }}">
-                                @foreach ($listSach as $sach )
-                                    <option value="{{ $sach['id'] }}">{{ $sach['TenSach'] }}</option>
-                                @endforeach                                
-                            </select>
-
-                            <button type="submit" class='btn btn-primary'>Loc</button>
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
                         </div>
-                    </form>
-                    <a href="{{ route('chuong.index') }}" class='btn btn-danger'>Xoa loc</a>
+                    @endif
 
                     <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th scope="col">Mã chương</th>
-                            <th scope="col">Sách</th>
-                            <th scope="col">Chương số</th>
-                            <th scope="col">Tiêu đề chương</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Vai trò</th>
                             <th scope="col">Quản lý</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($danhSachChuong as $key => $chuong)
+                            @foreach($users as $key => $user)
                                 <tr>
                                     <th scope="row">{{ $key }}</th>
-                                    <td>{{ $chuong['SachID'] }}</td>
-                                    <td>{{ $chuong['SoChuong'] }}</td>
-                                    <td>{{ $chuong['TieuDe'] }}</td>
+                                    <td>{{ $user['name'] }}</td>
+                                    <td>{{ $user['email'] }}</td>
+                                    <td>{{ $user['role'] == 'admin' ? 'Người quản trị' : 'Người đọc'}}</td>
                                     <td>
-                                        <a href="{{ route('chuong.edit', ['chuong' => $chuong['id']]) }}" class='btn btn-primary'>Sửa</a>
-                                        <form action="{{ route('chuong.destroy', ['chuong' => $chuong['id']]) }}" method="POST">
+                                        <a href="{{ route('account.edit', ['account' => $user['id']]) }}" class='btn btn-primary'>Sửa</a>
+                                        <form action="{{ route('account.destroy', ['account' => $user['id']]) }}" method="POST">
                                             @method('DELETE')
                                             @CSRF
-                                            <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá chương này không?');">Xoá</button>
+                                            <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');">Xoá</button>
                             
                                         </form>
                                     </td>

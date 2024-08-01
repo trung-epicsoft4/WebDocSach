@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class AccountController extends Controller
 {
@@ -13,7 +15,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        
+        $users = User::all();
+        return view('admin.account.index')->with(compact('users'));
     }
 
     /**
@@ -79,6 +82,13 @@ class AccountController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (Auth::user()->id == $user->id) {
+            return redirect()->back()->with('error','Không thể xoá tài khoản này!');
+        }
+
+        $user->delete();
+        return redirect()->back()->with('status','Xoá thành công!');
     }
 }

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Cập nhật chuong</div>
+                <div class="card-header">Sửa tài khoản</div>
                 
                 <div class="card-body">
 
@@ -16,44 +16,83 @@
                         </div>
                     @endif
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
                         </div>
                     @endif
                         
-                    <form method="POST" action="{{ route('chuong.update', [$chuong['id']])}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('account.update', [$user['id']])}}" enctype="multipart/form-data">
                         @method('PUT')
                         @CSRF
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Tiêu đề chương</label>
-                          <input type="text" class="form-control" value="{{ $chuong['TieuDe'] }}" name="tieude" placeholder="Tiêu đề chương...">
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">Tên</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{ $user['name'] }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">Chương số</label>
-                          <input type="text" class="form-control" value="{{ $chuong['SoChuong'] }}" name="chuongso" placeholder="Chương số...">
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Địa chỉ email</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user['email'] }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nội dung</label>
-                            <textarea id="" class="form-control" name="noidung" value="{{ $chuong['NoiDung'] }}"></textarea>
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Mật khẩu</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Thuộc sách</label>
-                            <select class="form-select" aria-label="Default select example" name="sachID" value="{{ $chuong['SachID'] }}">
-                                @foreach ($listSach as $sach )
-                                    <option value="{{ $sach['id'] }}">{{ $sach['TenSach'] }}</option>
-                                @endforeach                                
-                            </select>
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Xác nhận mật khẩu</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                            </div>
                         </div>
 
-                        <button type="submit" name="suasach" class="btn btn-primary">Sửa</button>
+                        <div class="row mb-3">
+                            <label class="col-md-4 col-form-label text-md-end">Vai trò</label>
+                            <div class="col-md-6">
+                                <select class="form-select" name="role" value="{{ $user['role'] }}" required>
+                                    <option value="admin">Người quản trị</option>
+                                    <option value="reader">Người đọc</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Thêm
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

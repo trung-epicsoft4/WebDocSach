@@ -6,6 +6,7 @@ use App\Models\DanhMuc;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Models\Sach;
+use Illuminate\Support\Facades\Auth;
 use Yaza\LaravelGoogleDriveStorage\Gdrive;
 
 class SachController extends Controller
@@ -19,6 +20,12 @@ class SachController extends Controller
      */
     public function index()
     {
+        $role = Auth::user()->role;
+
+        if ($role == 'reader') {
+            return redirect('/');
+        }
+        
         $danhSachSach = Sach::with('danhmuc')->get();
         return view('admin.sach.index')->with(compact('danhSachSach'));
     }
@@ -40,33 +47,39 @@ class SachController extends Controller
         $data = $request->validate(
             [
                 'tensach' => 'required|unique:sach|max:255',
-                'motasach' => 'required',
-                'kichhoat' => 'required',
+                'tacgia' => 'required|max:255',
+                'namxuatban' => 'required|integer',
                 'danhmucsach' => 'required',
+                'motasach' => 'required',
                 'hinhanh' => 'required|image',
-                'noidungsach' => 'required',
+                'kichhoat' => 'required',
             ],
             [
                 'tensach.required' => 'Vui lòng nhập tên sách!',
                 'tensach.unique' => 'Tên sách đã tồn tại, vui lòng nhập tên khác!',
-                'motasach.required' => 'Vui lòng nhập mô tả sách!',
-                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
+                'tensach.max' => 'Ten sach qua ki tu cho phep, vui long nhap ten sach duoi 255 ki tu!',
+                'tacgia.required' => 'Vui lòng nhập ten tac gia!',
+                'tacgia.max' => 'Ten tac gia qua ki tu cho phep, vui long nhap ten tac gia duoi 255 ki tu!',
+                'namxuatban.required' => 'Vui long nhap nam xuat ban!',
+                'namxuatban.integer' => 'Vui long nhap dung dinh dang nam!',
                 'danhmucsach.required' => 'Vui lòng chọn danh mục sách!',
+                'motasach.required' => 'Vui lòng nhập mô tả sách!',
                 'hinhanh.required' => 'Vui lòng chọn hình ảnh!',
-                'noidungsach.required' => 'Vui lòng nhập nội dung!',
+                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
             ]
         );
 
         $sach = new Sach();
         $sach->TenSach = $data['tensach']; 
+        $sach->TacGia = $data['tacgia']; 
+        $sach->NamXuatBan = $data['namxuatban'];
         $sach->DanhMucID = $data['danhmucsach'];
         $sach->MoTa = $data['motasach']; 
         $sach->KichHoat = $data['kichhoat'];
-        $sach->NoiDung = $data['noidungsach'];
 
         $get_image = $data['hinhanh'];
         $path = "public/uploads/sach/";
-        $newImageName = $data['tensach'].'.'.$get_image->getClientOriginalName();
+        $newImageName = $data['tensach'].'.'.$get_image->getClientOriginalExtension();
         $get_image->move($path, $newImageName);
 
         $sach->HinhAnh = $newImageName;
@@ -101,27 +114,35 @@ class SachController extends Controller
         $data = $request->validate(
             [
                 'tensach' => 'required|max:255',
-                'motasach' => 'required',
-                'kichhoat' => 'required',
+                'tacgia' => 'required|max:255',
+                'namxuatban' => 'required|integer',
                 'danhmucsach' => 'required',
-                'noidungsach' => 'required',
+                'motasach' => 'required',
+                'hinhanh' => 'image',
+                'kichhoat' => 'required',
             ],
             [
                 'tensach.required' => 'Vui lòng nhập tên sách!',
                 'tensach.unique' => 'Tên sách đã tồn tại, vui lòng nhập tên khác!',
-                'motasach.required' => 'Vui lòng nhập mô tả sách!',
-                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
+                'tensach.max' => 'Ten sach qua ki tu cho phep, vui long nhap ten sach duoi 255 ki tu!',
+                'tacgia.required' => 'Vui lòng nhập ten tac gia!',
+                'tacgia.max' => 'Ten tac gia qua ki tu cho phep, vui long nhap ten tac gia duoi 255 ki tu!',
+                'namxuatban.required' => 'Vui long nhap nam xuat ban!',
+                'namxuatban.integer' => 'Vui long nhap dung dinh dang nam!',
                 'danhmucsach.required' => 'Vui lòng chọn danh mục sách!',
-                'noidungsach.required' => 'Vui lòng nhập nội dung!',
+                'motasach.required' => 'Vui lòng nhập mô tả sách!',
+                'hinhanh.required' => 'Vui lòng chọn hình ảnh!',
+                'kichhoat.required' => 'Vui lòng chọn kích hoạt hay không!',
             ]
         );
 
         $sach = Sach::find($id);
         $sach->TenSach = $data['tensach']; 
+        $sach->TacGia = $data['tacgia']; 
+        $sach->NamXuatBan = $data['namxuatban'];
         $sach->DanhMucID = $data['danhmucsach'];
         $sach->MoTa = $data['motasach']; 
         $sach->KichHoat = $data['kichhoat'];
-        $sach->NoiDung = $data['noidungsach'];
 
         if (isset($data['hinhanh'])) {
             $get_image = $data['hinhanh'];
@@ -130,8 +151,9 @@ class SachController extends Controller
             $get_image->move($path, $newImageName);
             $sach->HinhAnh = $newImageName;
         }
-        
+
         $sach->update();
+
         return redirect()->back()->with('status', 'Cập nhật sách thành công!');
     }
 
@@ -142,14 +164,9 @@ class SachController extends Controller
     {
         $sach = Sach::find($id);
         $imageFile = "public/uploads/sach/".$sach['HinhAnh'];
-        $file = "public/uploads/sach/".$sach['FileSach'];
 
         if (file_exists($imageFile)) {
             unlink($imageFile);
-        }
-
-        if (file_exists($file)) {
-            unlink($file);
         }
 
         Sach::find($id)->delete();

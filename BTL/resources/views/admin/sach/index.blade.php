@@ -21,7 +21,6 @@
                             <th scope="col">Mã sách</th>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Hình ảnh</th>
-                            <th scope="col">Mô tả sách</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -32,7 +31,6 @@
                                     <th scope="row">{{ $key }}</th>
                                     <td>{{ $sach['TenSach'] }}</td>
                                     <td><img src="{{ asset('public/uploads/sach/'.$sach['HinhAnh']) }}" alt="" width="50px" height="50px"></td>
-                                    <td>{{ $sach['MoTa'] }}</td>
                                     <td>
                                         @if($sach['KichHoat'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>

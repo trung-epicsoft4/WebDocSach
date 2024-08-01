@@ -24,6 +24,24 @@
                   <li><a class="dropdown-item" href="{{ route('sach.index') }}">Liệt kê sách</a></li>
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Quản lý chương
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ route('chuong.create') }}">Thêm chương</a></li>
+                  <li><a class="dropdown-item" href="{{ route('chuong.index') }}">Liệt kê chương</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Quản lý tài khoản
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ route('account.create') }}">Thêm tài khoản</a></li>
+                  <li><a class="dropdown-item" href="{{ route('account.index') }}">Liệt kê tài khoản</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>

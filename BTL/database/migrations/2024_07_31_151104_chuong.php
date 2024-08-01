@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Sach', function (Blueprint $table) {
+        Schema::create('Chuong', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('TenSach')->unique();
-            $table->string('TacGia');
-            $table->year('NamXuatBan');
-            $table->integer('DanhMucID');
-            $table->text('MoTa');
-            $table->string('HinhAnh');
-            $table->integer('KichHoat');
+            $table->integer('SachID');
+            $table->integer('SoChuong');
+            $table->string('TieuDe');
+            $table->text('NoiDung');
             $table->timestamps();
         });
     }

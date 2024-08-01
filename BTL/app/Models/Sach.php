@@ -19,4 +19,8 @@ class Sach extends Model
     public function danhmuc() {
         return $this->belongsTo('App\Models\DanhMuc', 'DanhMucID', 'id');
     }
+
+    public function chuong() {
+        return $this->hasMany('App\Models\Chuong');
+    }
 }

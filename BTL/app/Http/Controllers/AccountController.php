@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class AccountController extends Controller
@@ -75,7 +76,36 @@ class AccountController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $this->validator($request->all(), $id)->validate();
+        $user = User::find($id);
+
+        if (isset($data['password'])) {
+            $user->password = Hash::make($data['password']);
+        }
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->role = $data['role'];
+
+        $currentUser = Auth::user();
+        if ($currentUser['id'] == $id && $currentUser['role'] != $data['role']) {
+            return redirect()->back()->with('error','Không thể sửa role của tài khoản này!');
+        }
+
+        $user->update();
+        return redirect()->back()->with('status','Sửa thành công!');
+    }
+
+    protected function validator(array $data, string $id)
+    {
+        return Validator::make($data, 
+        [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id,],
+            'password' => ['nullable','string', 'min:8', 'confirmed'],
+            'role' => 'required',
+        ]
+    );
     }
 
     /**

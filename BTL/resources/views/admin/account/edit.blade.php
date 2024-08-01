@@ -21,6 +21,16 @@
                             {{ session('error') }}
                         </div>
                     @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                         
                     <form method="POST" action="{{ route('account.update', [$user['id']])}}" enctype="multipart/form-data">
                         @method('PUT')
@@ -30,7 +40,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">Tên</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="username" value="{{ $user['name'] }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user['name'] }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

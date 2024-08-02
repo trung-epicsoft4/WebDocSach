@@ -15,20 +15,20 @@
                         </div>
                     @endif
 
-                    <form method="get" action="{{ route('chuong.index') }}">
+                    <form method="get" action="{{ route('chapter.index') }}">
                         @method('GET')
                         <div>
                             <label for="exampleInputEmail1" class="form-label">Sách</label>
-                            <select class="form-select" aria-label="Default select example" name="sachID" value="{{ $sachID }}">
-                                @foreach ($listSach as $sach )
-                                    <option value="{{ $sach['id'] }}">{{ $sach['TenSach'] }}</option>
+                            <select class="form-select" aria-label="Default select example" name="bookID" value="{{ $bookID }}">
+                                @foreach ($books as $book )
+                                    <option value="{{ $book['id'] }}">{{ $book['title'] }}</option>
                                 @endforeach                                
                             </select>
 
                             <button type="submit" class='btn btn-primary'>Loc</button>
                         </div>
                     </form>
-                    <a href="{{ route('chuong.index') }}" class='btn btn-danger'>Xoa loc</a>
+                    <a href="{{ route('chapter.index') }}" class='btn btn-danger'>Xoa loc</a>
 
                     <table class="table table-striped">
                         <thead>
@@ -41,15 +41,15 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($danhSachChuong as $key => $chuong)
+                            @foreach($chapters as $key => $chapter)
                                 <tr>
                                     <th scope="row">{{ $key }}</th>
-                                    <td>{{ $chuong['SachID'] }}</td>
-                                    <td>{{ $chuong['SoChuong'] }}</td>
-                                    <td>{{ $chuong['TieuDe'] }}</td>
+                                    <td>{{ $chapter['bookID'] }}</td>
+                                    <td>{{ $chapter['order'] }}</td>
+                                    <td>{{ $chapter['title'] }}</td>
                                     <td>
-                                        <a href="{{ route('chuong.edit', ['chuong' => $chuong['id']]) }}" class='btn btn-primary'>Sửa</a>
-                                        <form action="{{ route('chuong.destroy', ['chuong' => $chuong['id']]) }}" method="POST">
+                                        <a href="{{ route('chapter.edit', ['chapter' => $chapter['id']]) }}" class='btn btn-primary'>Sửa</a>
+                                        <form action="{{ route('chapter.destroy', ['chapter' => $chapter['id']]) }}" method="POST">
                                             @method('DELETE')
                                             @CSRF
                                             <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá chương này không?');">Xoá</button>

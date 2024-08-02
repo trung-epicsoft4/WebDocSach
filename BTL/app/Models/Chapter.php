@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Chuong extends Model
+class Chapter extends Model
 {
     use HasFactory;
 
     public $timestamps = true;
     protected $fillable = [
-        'SachID', 'SoChuong', 'TieuDe', 'NoiDung'
+        'bookID', 'order', 'title', 'content'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'Chuong';
+    protected $table = 'Chapter';
 
-    public function sach() {
-        return $this->belongsTo('App\Models\Sach', 'SachID', 'id');
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
     }
 }

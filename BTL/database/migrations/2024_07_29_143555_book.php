@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Sach', function (Blueprint $table) {
+        Schema::create('Book', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('TenSach')->unique();
-            $table->string('TacGia');
-            $table->year('NamXuatBan');
-            $table->integer('DanhMucID');
-            $table->text('MoTa');
-            $table->string('HinhAnh');
-            $table->integer('KichHoat');
+            $table->string('title')->unique();
+            $table->string('author');
+            $table->year('year');
+            $table->integer('categoryID');
+            $table->text('description');
+            $table->string('image');
+            $table->integer('activate');
             $table->timestamps();
         });
     }

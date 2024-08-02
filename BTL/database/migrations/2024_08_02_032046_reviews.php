@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Chuong', function (Blueprint $table) {
+        Schema::create('Reviews', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->integer('SachID');
-            $table->integer('SoChuong');
-            $table->string('TieuDe');
-            $table->text('NoiDung');
-            $table->timestamps();
+            $table->foreignId('userID')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('bookID')->references('id')->on('Book')->onDelete('cascade');
+            $table->integer('rating');
+            $table->text('comment');
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Sach');
+        Schema::dropIfExists('Reviews');
     }
 };

@@ -26,28 +26,28 @@
                         </div>
                     @endif
                         
-                    <form method="POST" action="{{ route('chuong.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('chapter.store') }}" enctype="multipart/form-data">
                         @CSRF
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Tiêu đề chương</label>
-                          <input type="text" class="form-control" value="{{ old('tieude') }}" name="tieude" placeholder="Tiêu đề chương...">
+                          <input type="text" class="form-control" value="{{ old('title') }}" name="title" placeholder="Tiêu đề chương...">
                         </div>
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Chương số</label>
-                          <input type="text" class="form-control" value="{{ old('chuongso') }}" name="chuongso" placeholder="Chương số...">
+                          <input type="text" class="form-control" value="{{ old('order') }}" name="order" placeholder="Chương số...">
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nội dung</label>
-                            <textarea id="" class="form-control" name="noidung" value="{{ old('noidung') }}"></textarea>
+                            <textarea id="" class="form-control" name="content" value="{{ old('content') }}"></textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Thuộc sách</label>
-                            <select class="form-select" aria-label="Default select example" name="sachID" value="{{ old('sachID') }}">
-                                @foreach ($listSach as $sach )
-                                    <option value="{{ $sach['id'] }}">{{ $sach['TenSach'] }}</option>
+                            <select class="form-select" aria-label="Default select example" name="bookID" value="{{ old('bookID') }}">
+                                @foreach ($books as $book )
+                                    <option value="{{ $book['id'] }}">{{ $book['title'] }}</option>
                                 @endforeach                                
                             </select>
                         </div>

@@ -11,8 +11,8 @@
                   Quản lý danh mục
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('danhmuc.create') }}">Thêm danh mục</a></li>
-                  <li><a class="dropdown-item" href="{{ route('danhmuc.index') }}">Liệt kê danh mục</a></li>
+                  <li><a class="dropdown-item" href="{{ route('category.create') }}">Thêm danh mục</a></li>
+                  <li><a class="dropdown-item" href="{{ route('category.index') }}">Liệt kê danh mục</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -20,8 +20,8 @@
                   Quản lý sách
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('sach.create') }}">Thêm sách</a></li>
-                  <li><a class="dropdown-item" href="{{ route('sach.index') }}">Liệt kê sách</a></li>
+                  <li><a class="dropdown-item" href="{{ route('book.create') }}">Thêm sách</a></li>
+                  <li><a class="dropdown-item" href="{{ route('book.index') }}">Liệt kê sách</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -29,8 +29,8 @@
                   Quản lý chương
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ route('chuong.create') }}">Thêm chương</a></li>
-                  <li><a class="dropdown-item" href="{{ route('chuong.index') }}">Liệt kê chương</a></li>
+                  <li><a class="dropdown-item" href="{{ route('chapter.create') }}">Thêm chương</a></li>
+                  <li><a class="dropdown-item" href="{{ route('chapter.index') }}">Liệt kê chương</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">

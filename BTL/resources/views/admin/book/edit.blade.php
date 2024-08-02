@@ -26,47 +26,47 @@
                         </div>
                     @endif
                         
-                    <form method="POST" action="{{ route('sach.update', [$sach['id']])}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('book.update', [$book['id']])}}" enctype="multipart/form-data">
                         @method('PUT')
                         @CSRF
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Tên sách</label>
-                          <input type="text" class="form-control" value="{{ $sach['TenSach'] }}" name="tensach" placeholder="Tên sách...">
+                          <input type="text" class="form-control" value="{{ $book['title'] }}" name="title" placeholder="Tên sách...">
                         </div>
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Tac gia</label>
-                          <input type="text" class="form-control" value="{{ $sach['TacGia'] }}" name="tacgia" placeholder="Tác giả...">
+                          <input type="text" class="form-control" value="{{ $book['author'] }}" name="author" placeholder="Tác giả...">
                         </div>
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Nam xuat ban</label>
-                          <input type="text" class="form-control" value="{{ $sach['NamXuatBan'] }}" name="namxuatban" placeholder="Nam xuat ban...">
+                          <input type="text" class="form-control" value="{{ $book['year'] }}" name="year" placeholder="Nam xuat ban...">
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Danh mục sách</label>
-                            <select class="form-select" aria-label="Default select example" name="danhmucsach" value="{{ $sach['DanhMucID'] }}">
+                            <select class="form-select" aria-label="Default select example" name="categoryID" value="{{ $book['categoryID'] }}">
                                 @foreach ($danhSachDanhMuc as $danhmuc )
-                                    <option value="{{ $danhmuc['id'] }}">{{ $danhmuc['TenDanhMuc'] }}</option>
+                                    <option value="{{ $danhmuc['id'] }}">{{ $danhmuc['name'] }}</option>
                                 @endforeach                                
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Mô tả sách</label>
-                            <textarea id="" class="form-control" name="motasach" value="{{ $sach['MoTa'] }}"></textarea>
+                            <textarea id="" class="form-control" name="description" value="{{ $book['description'] }}"></textarea>
                         </div>
 
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Hình ảnh sách</label>
-                          <input type="file" class="form-control" name="hinhanh" accept="image/*">
-                          <img src="{{ asset('public/uploads/sach/'.$sach['HinhAnh']) }}" alt="" width="50px" height="50px">
+                          <input type="file" class="form-control" name="image" accept="image/*">
+                          <img src="{{ asset('public/uploads/sach/'.$book['image']) }}" alt="" width="50px" height="50px">
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
-                            <select class="form-select" aria-label="Default select example" name="kichhoat" value="{{ $sach['KichHoat'] }}">
+                            <select class="form-select" aria-label="Default select example" name="activate" value="{{ $book['activate'] }}">
                                 <option value="0">Kích hoạt</option>
                                 <option value="1">Không kích hoạt</option>
                             </select>

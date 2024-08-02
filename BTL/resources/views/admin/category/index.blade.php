@@ -26,21 +26,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($danhSachDanhMuc as $key => $danhMuc)
+                            @foreach($categories as $key => $category)
                                 <tr>
                                     <th scope="row">{{ $key }}</th>
-                                    <td>{{ $danhMuc['TenDanhMuc'] }}</td>
-                                    <td>{{ $danhMuc['MoTa'] }}</td>
+                                    <td>{{ $category['name'] }}</td>
+                                    <td>{{ $category['description'] }}</td>
                                     <td>
-                                        @if($danhMuc['KichHoat'] == 0)
+                                        @if($category['activate'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>
                                         @else
                                             <span class='text text-danger'>Không kích hoạt</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('danhmuc.edit', ['danhmuc' => $danhMuc['id']]) }}" class='btn btn-primary'>Sửa</a>
-                                        <form action="{{ route('danhmuc.destroy', ['danhmuc' => $danhMuc['id']]) }}" method="POST">
+                                        <a href="{{ route('category.edit', ['category' => $category['id']]) }}" class='btn btn-primary'>Sửa</a>
+                                        <form action="{{ route('category.destroy', ['category' => $category['id']]) }}" method="POST">
                                             @method('DELETE')
                                             @CSRF
                                             <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá danh mục này không?');">Xoá</button>

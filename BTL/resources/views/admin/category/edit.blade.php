@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Thêm danh mục</div>
+                <div class="card-header">Cập nhật danh mục</div>
                 
                 <div class="card-body">
 
@@ -26,28 +26,28 @@
                         </div>
                     @endif
                         
-                    <form method="POST" action="{{ route('danhmuc.store') }}">
+                    <form method="POST" action="{{ route('category.update', [$category['id']])}}">
+                        @method('PUT')
                         @CSRF
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
-                          <input type="text" class="form-control" value="{{ old('tendanhmuc') }}" name="tendanhmuc" placeholder="Ten danh muc...">
+                          <input type="text" class="form-control" name="name" placeholder="Ten danh muc..." value='{{ $category['name'] }}'>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Mô tả danh mục</label>
-                            <input type="text" class="form-control" value="{{ old('tendanhmuc') }}" name="motadanhmuc" placeholder="Mo ta danh muc...">
+                            <input type="text" class="form-control" name="description" placeholder="Mo ta danh muc..." value='{{ $category['description'] }}'>
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>
-                            <select class="form-select" aria-label="Default select example" name="kichhoat" value="{{ old('kichhoat') }}">
+                            <select class="form-select" aria-label="Default select example" name="activate" value='{{ $category['activate'] }}'>
                                 <option value="0">Kích hoạt</option>
                                 <option value="1">Không kích hoạt</option>
                             </select>
                         </div>
                         
-                        <button type="submit" name="themdanhmuc" class="btn btn-primary">Thêm</button>
+                        <button type="submit" name="updateCategory" class="btn btn-primary">Cập nhật</button>
                     </form>
-                    
                 </div>
             </div>
         </div>

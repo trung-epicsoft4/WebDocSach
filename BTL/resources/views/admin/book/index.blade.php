@@ -26,21 +26,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($danhSachSach as $key => $sach)
+                            @foreach($books as $key => $book)
                                 <tr>
                                     <th scope="row">{{ $key }}</th>
-                                    <td>{{ $sach['TenSach'] }}</td>
-                                    <td><img src="{{ asset('public/uploads/sach/'.$sach['HinhAnh']) }}" alt="" width="50px" height="50px"></td>
+                                    <td>{{ $book['title'] }}</td>
+                                    <td><img src="{{ asset('public/uploads/sach/'.$book['image']) }}" alt="" width="50px" height="50px"></td>
                                     <td>
-                                        @if($sach['KichHoat'] == 0)
+                                        @if($book['activate'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>
                                         @else
                                             <span class='text text-danger'>Không kích hoạt</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('sach.edit', ['sach' => $sach['id']]) }}" class='btn btn-primary'>Sửa</a>
-                                        <form action="{{ route('sach.destroy', ['sach' => $sach['id']]) }}" method="POST">
+                                        <a href="{{ route('book.edit', ['book' => $book['id']]) }}" class='btn btn-primary'>Sửa</a>
+                                        <form action="{{ route('book.destroy', ['book' => $book['id']]) }}" method="POST">
                                             @method('DELETE')
                                             @CSRF
                                             <button class='btn btn-danger' onclick="return confirm('Bạn có chắc chắn muốn xoá sách này không?');">Xoá</button>

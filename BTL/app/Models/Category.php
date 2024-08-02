@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DanhMuc extends Model
+class Category extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'TenDanhMuc', 'MoTa', 'KichHoat'
+        'name', 'description', 'activate'
     ];
     protected $primaryKey = 'id';
-    protected $table = 'DanhMuc';
+    protected $table = 'Category';
 
-    public function sach() {
-        return $this->hasMany('app/Models/Sach');
+    public function book() {
+        return $this->hasMany(Book::class);
     }
 }

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('DanhMuc', function (Blueprint $table) {
+        Schema::create('Category', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('TenDanhMuc')->unique();
-            $table->string('MoTa');
-            $table->integer('KichHoat');
+            $table->string('name')->unique();
+            $table->string('description');
+            $table->integer('activate');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('DanhMuc');
+        Schema::dropIfExists('Category');
     }
 };

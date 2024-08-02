@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container tabular--wrapper">
+    <a href="{{ route('account.index') }}" class='btn btn-primary' style="margin-bottom: 10px;">Quay lại</a>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div>
             <div class="card">                
                 <div class="card-body">
                     @if (session('status'))

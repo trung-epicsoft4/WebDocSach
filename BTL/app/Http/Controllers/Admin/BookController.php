@@ -17,7 +17,8 @@ class BookController extends AdminController
     {
         $books = Book::with('category')->get();
         $title = 'Sách';
-        return view('admin.book.index')->with(compact('books', 'title'));
+        $isBook = true;
+        return view('admin.book.index')->with(compact('books', 'title', 'isBook'));
     }
 
     /**
@@ -27,7 +28,8 @@ class BookController extends AdminController
     {
         $danhSachDanhMuc = Category::all();
         $title = 'Thêm sách';
-        return view('admin.book.create')->with(compact('danhSachDanhMuc', 'title'));
+        $isBook = true;
+        return view('admin.book.create')->with(compact('danhSachDanhMuc', 'title', 'isBook'));
     }
 
     /**
@@ -95,7 +97,8 @@ class BookController extends AdminController
         $danhSachDanhMuc = Category::all();
         $book = Book::find($id);
         $title = 'Sửa sách';
-        return view('admin.book.edit')->with(compact('book', 'danhSachDanhMuc', 'title'));
+        $isBook = true;
+        return view('admin.book.edit')->with(compact('book', 'danhSachDanhMuc', 'title', 'isBook'));
     }
 
     /**

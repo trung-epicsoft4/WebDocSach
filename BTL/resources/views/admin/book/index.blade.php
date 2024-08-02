@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container tabular--wrapper">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">Liệt kê sách</div>
+    <a href="{{ route('book.create') }}" class='btn btn-primary' style="margin-bottom: 10px;">Thêm sách</a>
 
+    <div class="row justify-content-center">
+        <div>
+            <div class="card">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

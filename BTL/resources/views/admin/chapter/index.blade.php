@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container tabular--wrapper">
+    <a href="{{ route('chapter.create') }}" class='btn btn-primary' style="margin-bottom: 10px;">Thêm chương mới</a>
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">

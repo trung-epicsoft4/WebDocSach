@@ -16,7 +16,8 @@ class DashboardController extends AdminController
         $bookdata = $this->getBookData();
         $categorydata = $this->getCategoryData();
         $title = "Dashboard";
-        return view('admin.home')->with(compact('title', 'userdata', 'bookdata', 'categorydata'));
+        $isDashboard = true;
+        return view('admin.home')->with(compact('title', 'userdata', 'bookdata', 'categorydata', 'isDashboard'));
     }
 
     function getUserData() {

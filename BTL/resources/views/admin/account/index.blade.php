@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container tabular--wrapper">
+    <a href="{{ route('account.create') }}" class='btn btn-primary' style="margin-bottom: 10px;">Tạo tài khoản</a>
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div>
             <div class="card">
                 <div class="card-body">
                     @if (session('status'))

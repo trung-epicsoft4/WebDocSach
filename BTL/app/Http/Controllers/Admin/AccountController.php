@@ -18,8 +18,9 @@ class AccountController extends AdminController
     public function index()
     {
         $users = User::all();
+        $isAccount = true;
         $title = 'Danh sách tài khoản';
-        return view('admin.account.index')->with(compact('users', 'title'));
+        return view('admin.account.index')->with(compact('users', 'title', 'isAccount'));
     }
 
     /**
@@ -28,7 +29,8 @@ class AccountController extends AdminController
     public function create()
     {
         $title = 'Tạo tài khoản';
-        return view('admin.account.create')->with(compact('title'));
+        $isAccount = true;
+        return view('admin.account.create')->with(compact('title', 'isAccount'));
     }
 
     /**
@@ -72,7 +74,8 @@ class AccountController extends AdminController
     {
         $user = User::find($id);
         $title = 'Sửa tài khoản';
-        return view('admin.account.edit')->with(compact('user', 'title'));
+        $isAccount = true;
+        return view('admin.account.edit')->with(compact('user', 'title', 'isAccount'));
     }
 
     /**

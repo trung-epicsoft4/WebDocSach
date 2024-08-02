@@ -20,14 +20,15 @@ class ChapterController extends AdminController
         $chapters = Chapter::all();
         $bookID = "";
         $title = 'Danh sách chương';
+        $isChapter = true;
 
         if (isset($data['sachID'])) {
             $bookID = $data['bookID'];
             $chapters = Chapter::where('bookID', $bookID)->get();
-            return view('admin.chapter.index')->with(compact('chapters', 'books', 'bookID'));
+            return view('admin.chapter.index')->with(compact('chapters', 'books', 'bookID', 'title', 'isChapter'));
         }
         
-        return view('admin.chapter.index')->with(compact('chapters', 'books', 'bookID', 'title'));
+        return view('admin.chapter.index')->with(compact('chapters', 'books', 'bookID', 'title', 'isChapter'));
     }
 
     /**
@@ -37,7 +38,7 @@ class ChapterController extends AdminController
     {
         $books = Book::all();
         $title = 'Tạo chương';
-        return view('admin.chapter.create')->with(compact('books', 'title'));
+        return view('admin.chapter.create')->with(compact('books', 'title', 'isChapter'));
     }
 
     /**
@@ -88,7 +89,8 @@ class ChapterController extends AdminController
         $chapter = Chapter::find($id);
         $books = Book::all();
         $title = 'Sửa chương';
-        return view('admin.chapter.edit')->with(compact('chapter', 'books', 'title'));
+        $isChapter = true;
+        return view('admin.chapter.edit')->with(compact('chapter', 'books', 'title', 'isChapter'));
     }
 
     /**

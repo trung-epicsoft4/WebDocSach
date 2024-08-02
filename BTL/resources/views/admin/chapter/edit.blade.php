@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container tabular--wrapper">
+    <a href="{{ route('chapter.index') }}" class='btn btn-primary' style="margin-bottom: 10px;">Quay lại</a>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">                

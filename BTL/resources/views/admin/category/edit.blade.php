@@ -33,10 +33,6 @@
                           <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
                           <input type="text" class="form-control" name="name" placeholder="Ten danh muc..." value='{{ $category['name'] }}'>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mô tả danh mục</label>
-                            <input type="text" class="form-control" name="description" placeholder="Mo ta danh muc..." value='{{ $category['description'] }}'>
-                        </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>

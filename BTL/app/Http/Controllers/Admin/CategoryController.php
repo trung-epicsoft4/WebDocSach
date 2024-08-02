@@ -34,20 +34,17 @@ class CategoryController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required|unique:category|max:255',
-                'description' => 'required|max:255',
                 'activate' => 'required',
             ],
             [
                 'name.required' => 'Vui lòng nhập tên danh mục!',
                 'name.unique' => 'Tên danh mục đã tồn tại, vui lòng nhập tên khác!',
-                'description.required' => 'Vui lòng nhập mô tả danh mục!',
                 'activate.required' => 'Vui lòng chọn kích hoạt hay không!',
             ]
         );
 
         $danhMuc = new Category();
         $danhMuc->name = $data['name']; 
-        $danhMuc->description = $data['description']; 
         $danhMuc->activate = $data['activate'];
         $danhMuc->save();
         return redirect()->back()->with('status', 'Thêm danh mục thành công'); 
@@ -78,19 +75,16 @@ class CategoryController extends Controller
         $data = $request->validate(
             [
                 'name' => 'required|max:255',
-                'description' => 'required|max:255',
                 'activate' => 'required',
             ],
             [
                 'name.required' => 'Vui lòng nhập tên danh mục!',
-                'description.required' => 'Vui lòng nhập mô tả danh mục!',
                 'activate.required' => 'Vui lòng chọn kích hoạt hay không!',
             ]
         );
 
         $danhMuc = Category::find($id);
         $danhMuc->name = $data['name']; 
-        $danhMuc->description = $data['description']; 
         $danhMuc->activate = $data['activate'];
         $danhMuc->update();
         return redirect()->back()->with('status', 'Cập nhật danh mục thành công!'); 

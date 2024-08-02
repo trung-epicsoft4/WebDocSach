@@ -20,7 +20,6 @@
                           <tr>
                             <th scope="col">Mã danh mục</th>
                             <th scope="col">Tên danh mục</th>
-                            <th scope="col">Mô tả</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -30,7 +29,6 @@
                                 <tr>
                                     <th scope="row">{{ $key }}</th>
                                     <td>{{ $category['name'] }}</td>
-                                    <td>{{ $category['description'] }}</td>
                                     <td>
                                         @if($category['activate'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>

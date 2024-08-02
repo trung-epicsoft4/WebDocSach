@@ -32,10 +32,6 @@
                           <label for="exampleInputEmail1" class="form-label">Tên danh mục</label>
                           <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="Ten danh muc...">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Mô tả danh mục</label>
-                            <input type="text" class="form-control" value="{{ old('description') }}" name="description" placeholder="Mo ta danh muc...">
-                        </div>
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Kích hoạt</label>

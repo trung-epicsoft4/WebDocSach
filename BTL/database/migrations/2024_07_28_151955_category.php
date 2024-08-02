@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('Category', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name')->unique();
-            $table->string('description');
             $table->integer('activate');
         });
     }

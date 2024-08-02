@@ -1,8 +1,8 @@
 @extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.admin.adminNav')
-<div class="container">
+
+<div class="container tabular--wrapper">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

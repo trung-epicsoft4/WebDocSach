@@ -13,8 +13,9 @@ class CategoryController extends AdminController
      */
     public function index()
     {
+        $title = 'Danh sách danh mục';
         $categories = Category::orderBy('id', 'DESC')->get();
-        return view('admin.category.index')->with(compact('categories'));
+        return view('admin.category.index')->with(compact('categories', 'title'));
     }
 
     /**
@@ -22,7 +23,8 @@ class CategoryController extends AdminController
      */
     public function create()
     {
-        return view('admin.category.create');
+        $title = 'Tạo danh mục';
+        return view('admin.category.create')->with(compact('title'));
     }
 
     /**
@@ -62,8 +64,9 @@ class CategoryController extends AdminController
      */
     public function edit(string $id)
     {
+        $title = 'Sửa danh mục';
         $category = Category::find($id);
-        return view('admin.category.edit')->with(compact('category'));
+        return view('admin.category.edit')->with(compact('category', 'title'));
     }
 
     /**

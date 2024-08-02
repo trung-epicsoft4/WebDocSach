@@ -13,16 +13,13 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .body {
-            background-color: black;
-        }
-    </style>
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="/css/adminApp.css" rel="stylesheet" >
+    @vite(['resources/sass/app.scss'])
 </head>
 <body>
-    <div id="app">
+    {{-- <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/admin') }}">
@@ -79,6 +76,64 @@
         <main class="py-4">
             @yield('content')
         </main>
+    </div> --}}
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="{{ route('dashboard') }}">
+                    <i class="fas fa-user"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href={{ route('category.index') }}>
+                    <i class="fas fa-user"></i>
+                    <span>Danh mục</span>
+                </a>
+            </li>
+            <li>
+                <a href={{ route('book.index') }}>
+                    <i class="fas fa-user"></i>
+                    <span>Sách</span>
+                </a>
+            </li>
+            <li>
+                <a href={{ route('chapter.index') }}>
+                    <i class="fas fa-user"></i>
+                    <span>Chương</span>
+                </a>
+            </li>
+            <li>
+                <a href={{ route('account.index') }}>
+                    <i class="fas fa-user"></i>
+                    <span>Tài khoản</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <i class="fas fa-user"></i>
+                    <span>Đăng xuất</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+      </div>
+    
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h2>{{ $title }}</h2>
+            </div>
+            <div class="user-info">
+                <div class="img"></div>
+            </div>
+        </div>
+
+        @yield('content')
     </div>
+    
 </body>
 </html>

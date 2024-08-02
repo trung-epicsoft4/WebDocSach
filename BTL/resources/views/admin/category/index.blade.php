@@ -1,13 +1,12 @@
 @extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.admin.adminNav')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">Liệt kê danh mục</div>
+<div class="container tabular--wrapper">
+    <a href="{{ route('category.create') }}" class='btn btn-primary' style="margin-bottom: 10px;">Thêm danh mục</a>
 
+    <div class="row justify-content-center">
+        <div>
+            <div class="card">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

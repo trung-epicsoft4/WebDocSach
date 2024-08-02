@@ -1,29 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Sach;
 use App\Models\Chuong;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ChuongController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $role = Auth::user()->role;
-
-        if ($role == 'reader') {
-            return redirect('/');
-        }
-
         $data = $request->all();
         $listSach = Sach::all();
         $danhSachChuong = Chuong::all();

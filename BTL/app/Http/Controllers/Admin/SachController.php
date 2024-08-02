@@ -1,20 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\DanhMuc;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use App\Models\Sach;
 use Illuminate\Support\Facades\Auth;
-use Yaza\LaravelGoogleDriveStorage\Gdrive;
+use App\Http\Controllers\Controller;
 
 class SachController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */

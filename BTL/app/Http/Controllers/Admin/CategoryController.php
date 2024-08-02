@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\AdminController;
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
-
     /**
      * Display a listing of the resource.
      */

@@ -1,15 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class AccountController extends Controller
+class AccountController extends AdminController
 {
+    
     /**
      * Display a listing of the resource.
      */

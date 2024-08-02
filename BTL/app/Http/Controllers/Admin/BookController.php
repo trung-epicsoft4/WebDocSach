@@ -6,9 +6,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\AdminController;
 
-class BookController extends Controller
+class BookController extends AdminController
 {
      /**
      * Display a listing of the resource.

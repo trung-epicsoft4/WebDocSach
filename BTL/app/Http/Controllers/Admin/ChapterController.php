@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Chapter;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Base\AdminController;
 use Illuminate\Support\Facades\Auth;
 
-class ChapterController extends Controller
+class ChapterController extends AdminController
 {
     /**
      * Display a listing of the resource.

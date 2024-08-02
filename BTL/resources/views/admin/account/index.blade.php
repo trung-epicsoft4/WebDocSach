@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.adminNav')
+@include('layouts.admin.adminNav')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach($users as $key => $user)
                                 <tr>
-                                    <th scope="row">{{ $key }}</th>
+                                    <th scope="row">{{ $user['id'] }}</th>
                                     <td>{{ $user['name'] }}</td>
                                     <td>{{ $user['email'] }}</td>
                                     <td>{{ $user['role'] == 'admin' ? 'Người quản trị' : 'Người đọc'}}</td>

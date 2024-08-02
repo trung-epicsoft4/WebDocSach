@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.adminNav')
+@include('layouts.admin.adminNav')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -27,7 +27,7 @@
                         <tbody>
                             @foreach($categories as $key => $category)
                                 <tr>
-                                    <th scope="row">{{ $key }}</th>
+                                    <th scope="row">{{ $category['id'] }}</th>
                                     <td>{{ $category['name'] }}</td>
                                     <td>
                                         @if($category['activate'] == 0)

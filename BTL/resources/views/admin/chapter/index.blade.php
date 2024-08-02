@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.adminNav')
+@include('layouts.admin.adminNav')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -43,7 +43,7 @@
                         <tbody>
                             @foreach($chapters as $key => $chapter)
                                 <tr>
-                                    <th scope="row">{{ $key }}</th>
+                                    <th scope="row">{{ $chapter['id'] }}</th>
                                     <td>{{ $chapter['bookID'] }}</td>
                                     <td>{{ $chapter['order'] }}</td>
                                     <td>{{ $chapter['title'] }}</td>

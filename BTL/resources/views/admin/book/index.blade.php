@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin.app')
 
 @section('content')
-@include('layouts.adminNav')
+@include('layouts.admin.adminNav')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -21,6 +21,7 @@
                             <th scope="col">Mã sách</th>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Hình ảnh</th>
+                            <th scope="col">Số người xem</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -28,9 +29,10 @@
                         <tbody>
                             @foreach($books as $key => $book)
                                 <tr>
-                                    <th scope="row">{{ $key }}</th>
+                                    <th scope="row">{{ $book['id'] }}</th>
                                     <td>{{ $book['title'] }}</td>
                                     <td><img src="{{ asset('public/uploads/sach/'.$book['image']) }}" alt="" width="50px" height="50px"></td>
+                                    <td>{{ $book->views()->distinct('bookID')->count('bookID') }}</td>
                                     <td>
                                         @if($book['activate'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>

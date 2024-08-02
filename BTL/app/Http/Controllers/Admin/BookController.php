@@ -68,7 +68,7 @@ class BookController extends AdminController
 
         $get_image = $data['image'];
         $path = "public/uploads/sach/";
-        $newImageName = $get_image.'.'.$get_image->getClientOriginalExtension();
+        $newImageName = $data['title'].'.'.$get_image->getClientOriginalExtension();
         $get_image->move($path, $newImageName);
 
         $sach->image = $newImageName;
@@ -136,7 +136,7 @@ class BookController extends AdminController
         if (isset($data['image'])) {
             $get_image = $data['image'];
             $path = "public/uploads/sach/";
-            $newImageName = $get_image.'.'.$get_image->getClientOriginalName();
+            $newImageName = $data['title'].'.'.$get_image->getClientOriginalExtension();
             $get_image->move($path, $newImageName);
             $sach->image = $newImageName;
         }

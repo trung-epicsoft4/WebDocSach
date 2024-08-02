@@ -17,7 +17,7 @@ class Category extends Model
     protected $primaryKey = 'id';
     protected $table = 'Category';
 
-    public function book() {
-        return $this->hasMany(Book::class);
+    public function books() {
+        return $this->hasMany(Book::class, 'categoryID');
     }
 }

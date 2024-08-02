@@ -20,6 +20,7 @@
                           <tr>
                             <th scope="col">Mã danh mục</th>
                             <th scope="col">Tên danh mục</th>
+                            <th scope="col">Số lượng sách</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
                           </tr>
@@ -29,6 +30,7 @@
                                 <tr>
                                     <th scope="row">{{ $category['id'] }}</th>
                                     <td>{{ $category['name'] }}</td>
+                                    <td>{{ $category->books()->count() }}</td>
                                     <td>
                                         @if($category['activate'] == 0)
                                             <span class='text text-success'>Kích hoạt</span>

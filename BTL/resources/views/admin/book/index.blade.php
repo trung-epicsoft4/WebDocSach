@@ -21,6 +21,7 @@
                             <th scope="col">Mã sách</th>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Hình ảnh</th>
+                            <th scope="col">Số lượng chương</th>
                             <th scope="col">Số người xem</th>
                             <th scope="col">Kích hoạt</th>
                             <th scope="col">Quản lý</th>
@@ -32,6 +33,7 @@
                                     <th scope="row">{{ $book['id'] }}</th>
                                     <td>{{ $book['title'] }}</td>
                                     <td><img src="{{ asset('public/uploads/sach/'.$book['image']) }}" alt="" width="50px" height="50px"></td>
+                                    <td>{{ $book->chapters()->count() }}</td>
                                     <td>{{ $book->views()->distinct('bookID')->count('bookID') }}</td>
                                     <td>
                                         @if($book['activate'] == 0)

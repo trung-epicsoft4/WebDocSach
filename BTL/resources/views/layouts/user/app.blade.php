@@ -38,6 +38,21 @@
     <script src="/scripts/plugins.js?id=b612d946b32459430eed3066ed15adf2"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34864968-3"></script>
+
+    <title>Owl Carousel Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+    .owl-carousel .item {
+        background: #4DC7A0;
+        padding: 20px;
+        margin: 10px;
+        color: white;
+        border-radius: 3px;
+        text-align: center;
+    }
+    </style>
 </head>
 
 <body>
@@ -45,6 +60,7 @@
         <div id="navbar" class="headroom">
             <div class="container">
 
+<<<<<<< Updated upstream
                 <div class="navbar-logo-wrapper">
                     <a href="/" class="navbar-logo" style="background-image: url('/img/logo-9.png')"
                         title="Trang chủ"></a>
@@ -123,8 +139,10 @@
 
                 <!--<section id="nav-search"></section>-->
 
+=======
+>>>>>>> Stashed changes
                 <!-------Menu------->
-                <!-- <div class="navbar-logo-wrapper">
+                <div class="navbar-logo-wrapper">
                     <a href="/" class="navbar-logo" style="background-image: url('/img/logo-9.png')"
                         title="Trang chủ"></a>
                 </div>
@@ -167,7 +185,7 @@
                                     class="fas fa-search"></i></button>
                         </form>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <main class="py-4">
